@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>scriptpost — expense tracker</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>scriptpost</h1>
+    <p class="tagline">software &amp; infrastructure expense tracker</p>
+  </header>
+
+  <section class="summary-bar" id="summary-bar">
+    <div class="summary-card">
+      <span class="summary-label">Monthly</span>
+      <span class="summary-value" id="summary-monthly">$0.00</span>
+    </div>
+    <div class="summary-card">
+      <span class="summary-label">Annual</span>
+      <span class="summary-value" id="summary-annual">$0.00</span>
+    </div>
+    <div class="summary-card" id="budget-card">
+      <span class="summary-label">Budget</span>
+      <span class="summary-value" id="summary-budget">not set</span>
+    </div>
+  </section>
+
+  <section class="category-breakdown" id="category-breakdown" aria-label="Spend by category">
+    <!-- rendered by renderCategoryBreakdown() — Drill 4 -->
+  </section>
+
+  <section class="renewals" id="renewals-banner" aria-live="polite">
+    <!-- rendered by highlightUpcomingRenewals() — Drill 6 -->
+  </section>
+
+  <main class="app-main">
+    <section class="expense-form-section">
+      <h2>Add Expense</h2>
+      <form id="expense-form" novalidate>
+        <div class="form-row">
+          <label for="expense-name">Name</label>
+          <input type="text" id="expense-name" name="name" required placeholder="e.g. AWS, GitHub Actions">
+        </div>
+        <div class="form-row">
+          <label for="expense-category">Category</label>
+          <select id="expense-category" name="category">
+            <option value="hosting">Hosting</option>
+            <option value="saas">SaaS Tools</option>
+            <option value="api">APIs</option>
+            <option value="domains">Domains</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="expense-amount">Amount ($)</label>
+          <input type="number" id="expense-amount" name="amount" step="0.01" min="0" required>
+        </div>
+        <div class="form-row">
+          <label for="expense-cycle">Billing Cycle</label>
+          <select id="expense-cycle" name="billingCycle">
+            <option value="monthly">Monthly</option>
+            <option value="annual">Annual</option>
+            <option value="one-time">One-time</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="expense-start-date">Start Date</label>
+          <input type="date" id="expense-start-date" name="startDate" required>
+        </div>
+        <div class="form-row">
+          <label for="expense-notes">Notes</label>
+          <input type="text" id="expense-notes" name="notes" placeholder="optional">
+        </div>
+        <div class="form-row form-actions">
+          <button type="submit" id="expense-submit">Add Expense</button>
+        </div>
+        <p class="form-error" id="form-error" role="alert"></p>
+      </form>
+    </section>
+
+    <section class="expense-list-section">
+      <div class="list-header">
+        <h2>Expenses</h2>
+      </div>
+      <table class="expense-table" id="expense-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Cycle</th>
+            <th>Next Renewal</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="expense-table-body">
+          <!-- rendered by renderExpenseList() — Drill 1/2 -->
+        </tbody>
+      </table>
+      <p class="empty-state" id="empty-state" hidden>No expenses yet. Add your first one above.</p>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <label for="budget-input">Monthly budget</label>
+    <input type="number" id="budget-input" step="0.01" min="0" placeholder="e.g. 500">
+    <button id="budget-save">Save Budget</button>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
