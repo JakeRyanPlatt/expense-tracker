@@ -1,7 +1,11 @@
 # Personal Expense Tracker
+
 - I need an application to track subscriptions and services
 - I like electron, but want to start with a no-ai proof of concept
 - Exercise boilerplate for interview prep 
+- Show frontend skills through accessibility
+- Show ability to support user experience
+
 ## "Any application that can be written in JavaScript, will eventually be written in JavaScript."
 ---
 
