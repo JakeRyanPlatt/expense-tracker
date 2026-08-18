@@ -35,7 +35,3 @@ The purpose of this repo is to prove my non-ai crafted skills in these areas. No
 - Closures
 - Event Loops
 - DSA
-
-## HTML
-
-- Not in scope, already familiar
