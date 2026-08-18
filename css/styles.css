@@ -25,6 +25,10 @@
     --grey-900: #1f2933;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 html {
     font-size: 200%;
     font-weight: 300;
@@ -34,12 +38,164 @@ html {
 }
 
 body {
-    display: flex;
-    background-image: linear-gradient(235deg);
-    justify-content: center;
-    height: 100vh;
+    margin: 0;
+    background-image: linear-gradient(235deg, var(--orange-050), var(--orange-100));
+    min-height: 100vh;
+    min-height: 100dvh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: var(--grey-900);
+    display: grid;
+    grid-template-columns: 250px minmax(0, 1fr);
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    column-gap: 0;
 }
 
-expense-appcalculator-section.form-row {
-    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.2); 
+.app-header {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    justify-items: start;
+    align-items: start;
+    padding: 0.5rem 1rem 0.25rem;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    width: 100%;
+    min-height: 3rem;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-left: auto;
+    font-size: 0.45rem;
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.app-sidebar {
+    grid-area: sidebar;
+    padding: 0.75rem 0.75rem 0.5rem;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    display: grid;
+    align-content: start;
+}
+
+.sidebar-nav {
+    height: 100%;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-auto-flow: row;
+    gap: 0.4rem;
+}
+
+.sidebar-nav li {
+    min-height: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.sidebar-nav a {
+    display: block;
+    width: 100%;
+    text-align: left;
+    font-size: 0.5rem;
+    line-height: 1.2;
+}
+
+.app-main {
+    grid-area: main;
+    padding: 1rem 1.5rem 2rem;
+    display: grid;
+    gap: 1.5rem;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.summary-bar {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.summary-card {
+    display: grid;
+    gap: 0.25rem;
+}
+
+.welcome-section,
+.expense-form-section,
+.expense-list-section,
+.expense-appcalculator-section,
+.category-breakdown,
+.renewals {
+    width: 100%;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.app-footer {
+    grid-area: footer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+#expense-form,
+#expense-calculator-form {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.form-row {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.form-actions {
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 900px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "sidebar"
+            "main"
+            "footer";
+    }
+
+    .app-sidebar {
+        padding-top: 0;
+    }
+
+    .summary-bar {
+        grid-template-columns: 1fr;
+    }
 }
