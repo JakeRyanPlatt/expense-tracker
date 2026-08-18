@@ -8,34 +8,62 @@
 </head>
 <body>
   <header class="app-header">
-    <h1>scriptpost</h1>
-    <p class="tagline">software &amp; infrastructure expense tracker</p>
+    <div class="header-inner">
+      <h1>scriptpost</h1>
+      <nav class="top-nav" aria-label="Primary navigation">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Pricing</a>
+        <a href="#">Login</a>
+        <p class="tagline">software &amp; infrastructure expense tracker</p>
+
+      </nav>
+    </div>
   </header>
 
-  <section class="summary-bar" id="summary-bar">
-    <div class="summary-card">
-      <span class="summary-label">Monthly</span>
-      <span class="summary-value" id="summary-monthly">$0.00</span>
-    </div>
-    <div class="summary-card">
-      <span class="summary-label">Annual</span>
-      <span class="summary-value" id="summary-annual">$0.00</span>
-    </div>
-    <div class="summary-card" id="budget-card">
-      <span class="summary-label">Budget</span>
-      <span class="summary-value" id="summary-budget">not set</span>
-    </div>
-  </section>
-
-  <section class="category-breakdown" id="category-breakdown" aria-label="Spend by category">
-    <!-- rendered by renderCategoryBreakdown() — Drill 4 -->
-  </section>
-
-  <section class="renewals" id="renewals-banner" aria-live="polite">
-    <!-- rendered by highlightUpcomingRenewals() — Drill 6 -->
-  </section>
+  <aside class="app-sidebar">
+    <nav class="sidebar-nav" aria-label="Sidebar navigation">
+      <ul>
+        <li><a href="#summary-bar">Summary</a></li>
+        <li><a href="#category-breakdown">Category Breakdown</a></li>
+        <li><a href="#renewals-banner">Upcoming Renewals</a></li>
+        <li><a href="#expense-form">Add Expense</a></li>
+        <li><a href="#expense-table">Expense List</a></li>
+        <li><a href="#expense-calculator-form">Expense Calculator</a></li>
+      </ul>
+    </nav>
+  </aside>
 
   <main class="app-main">
+    <section class="welcome-section">
+      <h2>Welcome to scriptpost!</h2>
+      <p>This is a simple expense tracker for software and infrastructure costs. You can add your expenses, set a monthly budget, and see a breakdown of your spending by category.</p>
+    </section>
+
+    <section class="summary-bar" id="summary-bar">
+      <div class="summary-card">
+        <span class="summary-label">Monthly</span>
+        <span class="summary-value" id="summary-monthly">$0.00</span>
+      </div>
+      <div class="summary-card">
+        <span class="summary-label">Annual</span>
+        <span class="summary-value" id="summary-annual">$0.00</span>
+      </div>
+      <div class="summary-card" id="budget-card">
+        <span class="summary-label">Budget</span>
+        <span class="summary-value" id="summary-budget">not set</span>
+      </div>
+    </section>
+
+    <section class="category-breakdown" id="category-breakdown" aria-label="Spend by category">
+      <!-- rendered by renderCategoryBreakdown() — Drill 4 -->
+    </section>
+
+    <section class="renewals" id="renewals-banner" aria-live="polite">
+      <!-- rendered by highlightUpcomingRenewals() — Drill 6 -->
+    </section>
+
     <section class="expense-form-section">
       <h2>Add Expense</h2>
       <form id="expense-form" novalidate>
@@ -100,6 +128,28 @@
         </tbody>
       </table>
       <p class="empty-state" id="empty-state" hidden>No expenses yet. Add your first one above.</p>
+    </section>
+
+    <section class="expense-appcalculator-section">
+      <h2>Expense Calculator</h2>
+      <form id="expense-calculator-form" novalidate>
+        <div class="form-row">
+          <label for="calculator-amount">Amount ($)</label>
+          <input type="number" id="calculator-amount" name="amount" step="0.01" min="0" required>
+        </div>
+        <div class="form-row">
+          <label for="calculator-cycle">Billing Cycle</label>
+          <select id="calculator-cycle" name="billingCycle">
+            <option value="monthly">Monthly</option>
+            <option value="annual">Annual</option>
+            <option value="one-time">One-time</option>
+          </select>
+        </div>
+        <div class="form-row form-actions">
+          <button type="submit" id="calculator-submit">Calculate</button>
+        </div>
+      </form>
+      <p class="calculator-result" id="calculator-result"></p>
     </section>
   </main>
 
